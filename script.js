@@ -8,29 +8,19 @@ select.addEventListener("change", () => {
 });
 
 function createCalendar(month) {
-  let days;
-  switch (month) {
-    case `February`:
-      days = 28;
-      break;
-    case `April`:
-      days = 30;
-      break;
-    case `June`:
-      days = 30;
-      break;
-    case `August`:
-      days = 30;
-      break;
-    case `October`:
-      days = 30;
-      break;
-    case `December`:
-      days = 30;
-      break;
-    default:
-      days = 31;
-      break;
+  let days = 31;
+    if (month === 'February') {
+        days = 28;  
+    } else if (
+        month === 'April' ||
+        month === 'June' ||
+        month === 'September' ||
+        month === 'November'
+    ) {
+        days = 30;
+    }
+            
+
   }
   list.textContent = "";
   h1.textContent = month;
@@ -39,7 +29,7 @@ function createCalendar(month) {
     listItem.textContent = i;
     list.appendChild(listItem);
   }
-}
+
 
 select.value = "January";
 createCalendar("January");
